@@ -8,7 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class MyObjectSetTest extends TestCase
 {
-    public function testSetSetHasObject() {
+    public function testSetSetHasObject()
+    {
         $objects = [
             new MyObject(),
         ];
@@ -18,7 +19,8 @@ class MyObjectSetTest extends TestCase
         self::assertEquals(1, $set->count());
     }
 
-    public function testCopyGivesNewTypedSet() {
+    public function testCopyGivesNewTypedSet()
+    {
         $objects = [
             new MyObject('test record 1'),
             new MyObject('test record 2'),
@@ -30,7 +32,8 @@ class MyObjectSetTest extends TestCase
         self::assertEquals($set, $copy);
     }
 
-    public function testDiffGivesNewTypedSetContainingDiff() {
+    public function testDiffGivesNewTypedSetContainingDiff()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
@@ -53,7 +56,8 @@ class MyObjectSetTest extends TestCase
         self::assertFalse($diff2->contains($o2));
     }
 
-    public function testFilterGivesNewTypedSetContainingFilteredResult() {
+    public function testFilterGivesNewTypedSetContainingFilteredResult()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
@@ -69,7 +73,8 @@ class MyObjectSetTest extends TestCase
         self::assertFalse($filter->contains($o3));
     }
 
-    public function testIntersectGivesNewTypedSetContainingIntersection() {
+    public function testIntersectGivesNewTypedSetContainingIntersection()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
@@ -85,7 +90,8 @@ class MyObjectSetTest extends TestCase
         self::assertFalse($intersect->contains($o1));
         self::assertFalse($intersect->contains($o3));
     }
-    public function testMapGivesTypedSetContainingAppliedMap() {
+    public function testMapGivesTypedSetContainingAppliedMap()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
@@ -100,7 +106,8 @@ class MyObjectSetTest extends TestCase
         self::assertEquals('test record 3 update', $map->get(2)->getTitle());
     }
 
-    public function testReversedGivesTypedSetContainingReversedOrder() {
+    public function testReversedGivesTypedSetContainingReversedOrder()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
@@ -115,7 +122,8 @@ class MyObjectSetTest extends TestCase
         self::assertEquals('test record 3', $reversed->get(0)->getTitle());
     }
 
-    public function testSliceGivesTypedSetContainingLeftOverObjects() {
+    public function testSliceGivesTypedSetContainingLeftOverObjects()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
@@ -130,7 +138,8 @@ class MyObjectSetTest extends TestCase
         self::assertFalse($slice->contains($o3));
     }
 
-    public function testUnionGivesTypedSetWithUnionResult() {
+    public function testUnionGivesTypedSetWithUnionResult()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
@@ -146,7 +155,8 @@ class MyObjectSetTest extends TestCase
         self::assertTrue($union->contains($o3));
     }
 
-    public function testXorGivesTypedSetWithXorResult() {
+    public function testXorGivesTypedSetWithXorResult()
+    {
         $o1 = new MyObject('test record 1');
         $o2 = new MyObject('test record 2');
         $o3 = new MyObject('test record 3');
