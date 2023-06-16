@@ -42,6 +42,7 @@ trait SetTrait {
     {
         return $this->set;
     }
+
     public function copy(): self
     {
         return new self(...$this->set->copy());
