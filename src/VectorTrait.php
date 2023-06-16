@@ -38,7 +38,8 @@ use Traversable;
 trait VectorTrait {
     private Vector $vector;
 
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         if (!method_exists($this->vector, $name)) {
             throw new \Exception('method does not exist');
         }
@@ -46,31 +47,38 @@ trait VectorTrait {
         return $this->vector->{$name}(...$arguments);
     }
 
-    public function copy(): self {
+    public function copy(): self
+    {
         return new self(...$this->vector->copy());
     }
 
-    public function filter(?callable $callback = null): self {
+    public function filter(?callable $callback = null): self
+    {
         return new self(...$this->vector->filter($callback));
     }
 
-    public function map(callable $callback): self {
+    public function map(callable $callback): self
+    {
         return new self(...$this->vector->map($callback));
     }
 
-    public function merge($values): self {
+    public function merge($values): self
+    {
         return new self(...$this->vector->merge($values));
     }
 
-    public function reversed(): self {
+    public function reversed(): self
+    {
         return new self(...$this->vector->reversed());
     }
 
-    public function slice(int $index, int $length = null): self {
+    public function slice(int $index, int $length = null): self
+    {
         return new self(...$this->vector->slice($index, $length));
     }
 
-    public function sorted(?callable $comparator = null): self {
+    public function sorted(?callable $comparator = null): self
+    {
         return new self(...$this->vector->sorted($comparator));
     }
 }

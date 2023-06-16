@@ -29,7 +29,8 @@ use Traversable;
 trait SetTrait {
     private Set $set;
 
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         if (!method_exists($this->set, $name)) {
             throw new \Exception('method does not exist');
         }
@@ -37,50 +38,62 @@ trait SetTrait {
         return $this->set->{$name}(...$arguments);
     }
 
-    public function getSet(): Set {
+    public function getSet(): Set
+    {
         return $this->set;
     }
-    public function copy(): self {
+    public function copy(): self
+    {
         return new self(...$this->set->copy());
     }
 
-    public function diff(Set $set): self {
+    public function diff(self $set): self
+    {
         return new self(...$this->set->diff($set->getSet()));
     }
 
-    public function filter(?callable $callback = null): self {
-        return new self($this->set->filter($callback));
+    public function filter(?callable $callback = null): self
+    {
+        return new self(...$this->set->filter($callback));
     }
 
-    public function intersect(self $set): self {
+    public function intersect(self $set): self
+    {
         return new self(...$this->set->intersect($set->getSet()));
     }
 
-    public function map(callable $callback): self {
+    public function map(callable $callback): self
+    {
         return new self(...$this->set->map($callback));
     }
 
-    public function merge($values): self {
+    public function merge($values): self
+    {
         return new self(...$this->set->merge($values));
     }
 
-    public function reversed(): self {
+    public function reversed(): self
+    {
         return new self(...$this->set->reversed());
     }
 
-    public function slice(int $index, ?int $length = null): self {
+    public function slice(int $index, ?int $length = null): self
+    {
         return new self(...$this->set->slice($index, $length));
     }
 
-    public function sorted(?callable $comparator = null): self {
+    public function sorted(?callable $comparator = null): self
+    {
         return new self(...$this->set->sorted($comparator));
     }
 
-    public function union(self $set): self {
+    public function union(self $set): self
+    {
         return new self(...$this->set->union($set->getSet()));
     }
 
-    public function xor(self $set): self {
+    public function xor(self $set): self
+    {
         return new self(...$this->set->xor($set->getSet()));
     }
 }

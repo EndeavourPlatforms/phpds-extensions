@@ -12,6 +12,14 @@
       "Endeavour\\DsExtensions\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Endeavour\\DsExtensions\\Tests\\": "tests/"
+    }
+  },
   "minimum-stability": "dev",
-  "prefer-stable" : true
+  "prefer-stable" : true,
+  "require-dev": {
+    "phpunit/phpunit": "^10.2"
+  }
 }
