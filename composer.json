@@ -1,4 +1,5 @@
 {
+  "name": "endeavour/php-ds-extensions",
   "type": "library",
   "license": "MIT",
   "require": {
