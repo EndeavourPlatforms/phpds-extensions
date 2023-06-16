@@ -106,6 +106,24 @@ class MyObjectSetTest extends TestCase
         self::assertEquals('test record 3 update', $map->get(2)->getTitle());
     }
 
+    public function testMergeGivesTypedSetContainingMergedObjects()
+    {
+        $o1 = new MyObject('test record 1');
+        $o2 = new MyObject('test record 2');
+        $o3 = new MyObject('test record 3');
+
+        $set = new MyObjectSet($o1);
+        $merged = $set->merge([$o2, $o3]);
+
+        self::assertInstanceOf(MyObjectSet::class, $merged);
+
+        self::assertTrue($merged->contains($o2));
+        self::assertTrue($merged->contains($o1));
+        self::assertTrue($merged->contains($o3));
+    }
+
+
+
     public function testReversedGivesTypedSetContainingReversedOrder()
     {
         $o1 = new MyObject('test record 1');
@@ -136,6 +154,35 @@ class MyObjectSetTest extends TestCase
         self::assertTrue($slice->contains($o2));
         self::assertFalse($slice->contains($o1));
         self::assertFalse($slice->contains($o3));
+    }
+
+    public function testSortedGivesSortedTypedSet()
+    {
+        $o1 = new MyObject('test record 1');
+        $o2 = new MyObject('test record 2');
+        $o3 = new MyObject('test record 3');
+
+        $vector = new MyObjectSet($o2, $o1, $o3);
+        $sorted = $vector->sorted(function (MyObject $current, MyObject $previous) {
+            $currentInt = preg_replace('#[^0-9]#', '', $current->getTitle());
+            $previousInt = preg_replace('#[^0-9]#', '', $previous->getTitle());
+
+            if ($currentInt > $previousInt) {
+                return 1;
+            }
+
+            if ($currentInt < $previousInt) {
+                return -1;
+            }
+
+            return 0;
+        });
+
+        self::assertInstanceOf(MyObjectSet::class, $sorted);
+
+        self::assertSame($o1, $sorted->get(0));
+        self::assertSame($o2, $sorted->get(1));
+        self::assertSame($o3, $sorted->get(2));
     }
 
     public function testUnionGivesTypedSetWithUnionResult()
