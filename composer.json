@@ -1,0 +1,15 @@
+{
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.0",
+    "ext-ds": "^1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Endeavour\\DsExtensions\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable" : true
+}
