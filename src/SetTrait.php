@@ -13,7 +13,7 @@ use Traversable;
  * @method void clear()
  * @method int count()
  * @method mixed first()
- * @method mixed get()
+ * @method mixed get(int $position)
  * @method Traversable getIterator()
  * @method bool isEmpty()
  * @method string join(?string $glue = null)
