@@ -47,6 +47,11 @@ trait VectorTrait {
         return $this->vector->{$name}(...$arguments);
     }
 
+    public function getVector(): Vector
+    {
+        return $this->vector;
+    }
+
     public function copy(): self
     {
         return new self(...$this->vector->copy());
